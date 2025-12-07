@@ -11,7 +11,7 @@ document.addEventListener('click', function(e){
     } else if(e.target.dataset.retweet) {
         handleRetweetClick(e.target.dataset.retweet)
     } else if(e.target.dataset.reply) {
-        handleReplyClick(e.target.dataset.reply)
+        toggleReplyVisibility(e.target.dataset.reply)
     } else if (e.target.dataset.delete) {
         handleDeleteClick(e.target.dataset.delete)
     } else if(e.target.id === 'tweet-btn') {
@@ -50,6 +50,7 @@ function onTweetReplyButtonClick(replyId) {
 
         replaceTweetObject(tweetsLocalStorage, targetTweetObj, replyId)
         render()
+        toggleReplyVisibility(replyId)
     }
 }
  
@@ -102,7 +103,7 @@ function handleDeleteClick(tweetId) {
     render()
 }
 
-function handleReplyClick(replyId){
+function toggleReplyVisibility(replyId){
     document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
 }
 
